@@ -1,0 +1,12 @@
+name = "Ananke"
+license = "MIT"
+licenselink = "https://github.com/theNewDynamic/gohugo-theme-ananke/blob/master/LICENSE.md"
+description = "A simple, clean theme"
+homepage = "https://gohugo.io"
+tags = ["blog", "minimal", "responsive"]
+features = ["blog", "responsive"]
+min_version = "0.60"
+
+[author]
+  name = "Bud Parr"
+  homepage = "https://theNewDynamic.com"
