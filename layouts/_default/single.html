@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="universal-wrapper">
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="content">
+      {{ with .Params.image }}
+        <img src="{{ . }}" alt="Иллюстрация страницы" style="max-width:100%; height:auto; border-radius:10px; margin-bottom:20px;">
+      {{ end }}
+
+      <div class="text-kz" style="margin:20px 0; font-size:1.2em; line-height:1.5;">
+        <h3>Казахский:</h3>
+        {{ .Params.text_kz | markdownify }}
+      </div>
+
+      <div class="text-en" style="margin:20px 0; font-size:1.2em; line-height:1.5; color:#666;">
+        <h3>English:</h3>
+        {{ .Params.text_en | markdownify }}
+      </div>
+
+      <div style="margin:20px 0;">
+        <button onclick="playAudio('kz')" style="background:#4CAF50; color:white; padding:10px 20px; margin:5px; border:none; border-radius:5px; cursor:pointer;">
+          Озвучить на казахском
+        </button>
+        <button onclick="playAudio('en')" style="background:#2196F3; color:white; padding:10px 20px; margin:5px; border:none; border-radius:5px; cursor:pointer;">
+          Play in English
+        </button>
+      </div>
+
+      <audio id="audio-kz" preload="auto" style="display:none;">
+        <source src="{{ .Params.audio_kz }}" type="audio/mpeg">
+      </audio>
+      <audio id="audio-en" preload="auto" style="display:none;">
+        <source src="{{ .Params.audio_en }}" type="audio/mpeg">
+      </audio>
+    </div>
+  </article>
+</div>
+
+<script>
+function playAudio(lang) {
+  // Остановить другое аудио
+  const audios = document.querySelectorAll('audio');
+  audios.forEach(audio => {
+    if (audio.id !== 'audio-' + lang) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  });
+  // Запустить выбранное
+  const audio = document.getElementById('audio-' + lang);
+  audio.currentTime = 0;
+  audio.play().catch(e => console.log('Ошибка воспроизведения: ', e));
+}
+</script>
+{{ end }}
