@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="universal-wrapper">
+  <h1>{{ .Title }}</h1>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+    {{ range where .Site.RegularPages "Section" "books" }}
+      {{ if .Params.cover }}
+        <div class="book-card" style="border:1px solid #ddd; border-radius:10px; padding:15px; text-align:center;">
+          <a href="{{ .Permalink }}">
+            <img src="{{ .Params.cover }}" alt="{{ .Title }}" style="max-width:100%; height:200px; object-fit:cover; border-radius:5px;">
+            <h3 style="margin:10px 0;">{{ .Title }}</h3>
+            <p>{{ .Params.description }}</p>
+          </a>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+{{ end }}
