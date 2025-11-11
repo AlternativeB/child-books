@@ -1,13 +1,14 @@
-baseURL = 'https://ваш-логин.github.io/детские-книги/'
+baseURL = 'https://alternativeig.github.io/child-books/'
 languageCode = 'ru'
 title = 'Детские аудиокниги с QR'
 
+# ВАЖНО: подключаем тему
 theme = 'ananke'
 
 [params]
-  favicon = ''
-  site_logo = ''
-  description = "Аудиокниги для детей на казахском и английском"
+  favicon = ""
+  description = "Аудиокниги для детей с QR-кодами"
+  read_more_copy = "Читать дальше"
 
 [languages]
   [languages.kz]
@@ -18,3 +19,6 @@ theme = 'ananke'
     weight = 2
 
 defaultContentLanguage = 'kz'
+
+# Отключаем лишнее
+disableKinds = ["taxonomy", "taxonomyTerm"]
