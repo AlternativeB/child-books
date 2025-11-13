@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детские аудиокниги с QR</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f8f9fa; line-height: 1.6; }
+    .header { text-align: center; margin-bottom: 40px; }
+    h1 { color: #2c3e50; }
+    .books { display: grid; gap: 25px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 1200px; margin: 0 auto; }
+    .book { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s; }
+    .book:hover { transform: translateY(-5px); }
+    .book img { width: 100%; height: 220px; object-fit: cover; }
+    .book h3 { margin: 12px 0 8px; color: #2c3e50; }
+    .book p { color: #555; padding: 0 15px 15px; }
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Детские аудиокниги с QR</h1>
+    <p>Билингвальные книги на казахском и английском. Сканируйте QR-код для аудио.</p>
+  </div>
+
+  <div class="books">
+    <a href="/books/cat-story/">
+      <div class="book">
+        <img src="/books/cat-story/images/cover.jpg" alt="Обложка 'Девочка и кошка'">
+        <h3>Девочка и кошка</h3>
+        <p>История о дружбе девочки и её кошки. 20 страниц с озвучкой.</p>
+      </div>
+    </a>
+    <!-- Добавьте новые книги здесь -->
+  </div>
+</body>
+</html>
