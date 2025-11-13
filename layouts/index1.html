@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ .Site.Title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+    .book-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .book-card { border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; }
+    .book-card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+    a { text-decoration: none; color: #0066cc; }
+  </style>
+</head>
+<body>
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.description }}</p>
+
+  <div class="book-grid">
+    {{ range where .Site.RegularPages "Section" "books" }}
+      {{ if .Params.cover }}
+        <div class="book-card">
+          <a href="{{ .Permalink }}">
+            <img src="{{ .Params.cover }}" alt="{{ .Title }}">
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Params.description }}</p>
+          </a>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</body>
+</html>
