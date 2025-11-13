@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Девочка и кошка on Балаларға арналған аудиокітаптар</title><link>https://alternativeb.github.io/child-books/kz/books/cat-story/</link><description>Recent content in Девочка и кошка on Балаларға арналған аудиокітаптар</description><generator>Hugo</generator><language>kz</language><atom:link href="https://alternativeb.github.io/child-books/kz/books/cat-story/index.xml" rel="self" type="application/rss+xml"/><item><title>Страница 1</title><link>https://alternativeb.github.io/child-books/kz/books/cat-story/page-01/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://alternativeb.github.io/child-books/kz/books/cat-story/page-01/</guid><description>&lt;h1 id="страница-1"&gt;Страница 1&lt;/h1&gt;
+&lt;p&gt;![Иллюстрация]({{ .Params.image }})&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Казахский:&lt;/strong&gt; {{ .Params.text_kz }}&lt;br&gt;
+&lt;strong&gt;English:&lt;/strong&gt; {{ .Params.text_en }}&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Озвучить на казахском&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;Play in English&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description></item></channel></rss>
