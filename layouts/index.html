@@ -1,18 +1,42 @@
-{{ define "main" }}
-  <h1>{{ .Site.Title }}</h1>
-  <p>{{ .Site.Params.description }}</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детские аудиокниги с QR</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+    h1 { color: #2c3e50; text-align: center; }
+    .books { display: grid; gap: 25px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 30px; }
+    .book { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 15px; transition: transform 0.2s; }
+    .book:hover { transform: translateY(-5px); }
+    .book img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+    .book h3 { margin: 12px 0 8px; color: #2c3e50; }
+    .book p { color: #555; font-size: 0.95em; }
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Детские аудиокниги с QR</h1>
+  <p style="text-align:center; color:#666;">Нажмите на книгу, чтобы открыть страницы</p>
 
   <div class="books">
+    <!-- Автоматически подтягивает все книги из content/books/ -->
     {{ range where .Site.RegularPages "Section" "books" }}
       {{ if .Params.cover }}
-        <div class="book">
-          <a href="{{ .Permalink }}">
+        <a href="{{ .Permalink }}">
+          <div class="book">
             <img src="{{ .Params.cover }}" alt="{{ .Title }}">
             <h3>{{ .Title }}</h3>
-            <p>{{ .Params.description }}</p>
-          </a>
-        </div>
+            <p>{{ .Params.description | default "История для детей" }}</p>
+          </div>
+        </a>
       {{ end }}
     {{ end }}
   </div>
-{{ end }}
+
+  {{ if not (where .Site.RegularPages "Section" "books") }}
+    <p style="text-align:center; color:#999; margin-top:50px;">Книги скоро появятся!</p>
+  {{ end }}
+</body>
+</html>
