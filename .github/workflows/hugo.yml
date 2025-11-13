@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write  # Для deploy-pages
 
 jobs:
   build:
@@ -15,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: recursive
+        submodules: recursive  # Фикс для тем/субмодулей
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v3
@@ -26,8 +28,22 @@ jobs:
     - name: Build
       run: hugo --minify
 
-    - name: Deploy to GitHub Pages
+    - name: Setup Pages  # Только для GitHub Pages
       if: github.ref == 'refs/heads/main'
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './public'
+
+    - name: Deploy to GitHub Pages  # Основной деплой
+      if: github.ref == 'refs/heads/main'
+      uses: actions/deploy-pages@v4
+
+    - name: Deploy to gh-pages (fallback)
+      if: github.ref == 'refs/heads/main' && failure()  # Если deploy-pages сломается
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
