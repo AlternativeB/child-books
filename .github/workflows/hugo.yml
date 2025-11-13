@@ -1,50 +1,28 @@
-name: Hugo CI/CD
+name: Deploy Hugo to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write  # Для deploy-pages
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: recursive  # Фикс для тем/субмодулей
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v3
-      with:
-        hugo-version: '0.120.0'
-        extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
 
-    - name: Build
-      run: hugo --minify
+      - name: Build
+        run: hugo --minify
 
-    - name: Setup Pages  # Только для GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: actions/configure-pages@v4
-
-    - name: Upload artifact
-      if: github.ref == 'refs/heads/main'
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: './public'
-
-    - name: Deploy to GitHub Pages  # Основной деплой
-      if: github.ref == 'refs/heads/main'
-      uses: actions/deploy-pages@v4
-
-    - name: Deploy to gh-pages (fallback)
-      if: github.ref == 'refs/heads/main' && failure()  # Если deploy-pages сломается
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          commit_message: "Deploy site"
