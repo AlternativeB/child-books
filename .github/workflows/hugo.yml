@@ -23,6 +23,7 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.HUGO_DEPLOY_TOKEN }}
           publish_dir: ./public
-          commit_message: "Deploy site"
+          commit_message: "Deploy: ${{ github.sha }}"
+          force_orphan: true
