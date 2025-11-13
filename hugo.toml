@@ -2,11 +2,7 @@ baseURL = "https://alternativeb.github.io/child-books/"
 languageCode = "ru"
 title = "Детские аудиокниги с QR"
 
-theme = "ananke"
-
 [params]
-  favicon = ""
-  site_logo = ""
   description = "Аудиокниги для детей на казахском и английском"
 
 [languages]
