@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ .Site.Title }}</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; max-width: 900px; }
-    h1 { color: #2c3e50; }
-    .books { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .book { border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; background: #f9f9f9; }
-    .book img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-    a { text-decoration: none; color: #0066cc; }
-    a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
+{{ define "main" }}
   <h1>{{ .Site.Title }}</h1>
   <p>{{ .Site.Params.description }}</p>
 
@@ -31,9 +15,4 @@
       {{ end }}
     {{ end }}
   </div>
-
-  {{ if not (where .Site.RegularPages "Section" "books") }}
-    <p>Книги скоро появятся!</p>
-  {{ end }}
-</body>
-</html>
+{{ end }}
